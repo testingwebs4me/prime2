@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIME by Asma - Professional Catering & Food Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #231F20;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(35, 31, 32, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            background: white;
+            color: #231F20;
+            border-color: white;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #231F20 0%, #333 100%);
+            color: white;
+            padding: 8rem 0 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #231F20;
+            font-weight: 300;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: #FFFFFF;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+            color: #231F20;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #231F20, #D1D3D4);
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6rem;
+            gap: 4rem;
+        }
+
+        .service-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .service-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .service-image {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(35, 31, 32, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .service-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .service-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #231F20;
+            font-weight: 600;
+        }
+
+        .service-content p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '•';
+            color: #231F20;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Footer */
+
+        /* Contact Section */
+        .contact {
+            background: #231F20;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .contact p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-logo {
+                font-size: 1.5rem;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .service-item {
+                flex-direction: column !important;
+                gap: 2rem;
+                margin-bottom: 4rem;
+            }
+
+            .service-image {
+                max-width: 100%;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-item {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .service-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .service-item:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">PRIME</a>
+            <ul class="nav-links">
+                <li><a href="#catering">Catering Services</a></li>
+                <li><a href="#white-label">White Label Manufacturing</a></li>
+                <li><a href="#supplying">Supplying Hotels & Cafés</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="logo">PRIME</h1>
+            <p class="tagline">Professional Catering & Food Services</p>
+            <p class="subtitle">by Asma</p>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>The Kitchen Behind Your Success</h2>
+                <p>We're the kitchen behind brands, events, and businesses. Whether you're hosting, launching, or selling — PRIME handles the craft, quality, and consistency so you don't have to.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">What We Do</h2>
+            
+            <!-- Catering Services -->
+            <div id="catering" class="service-item">
+                <div class="service-content">
+                    <h3>Catering Services</h3>
+                    <p>Full-scale food production for any occasion — customized, punctual, and seamless.</p>
+                    <ul class="service-features">
+                        <li><strong>Corporate Catering:</strong> Daily meals, executive meetings, staff events</li>
+                        <li><strong>Event Catering:</strong> Launches, weddings, private gatherings, VIP functions</li>
+                        <li><strong>Tailored Menus:</strong> Designed around your theme, crowd, or brand</li>
+                    </ul>
+                </div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0">
+                </div>
+            </div>
+
+            <!-- White Label Manufacturing -->
+            <div id="white-label" class="service-item">
+                <div class="service-content">
+                    <h3>White Label Manufacturing</h3>
+                    <p>Have the recipe or the concept? Let us bring it to life — under <strong>your brand name</strong>.</p>
+                    <ul class="service-features">
+                        <li>Full production & packaging, made-to-spec</li>
+                        <li>Ideal for food brands, influencers, and private-label ventures</li>
+                        <li>Confidential, reliable, and ready to scale with you</li>
+                    </ul>
+                </div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b">
+                </div>
+            </div>
+
+            <!-- Supplying Hotels & Cafés -->
+            <div id="supplying" class="service-item">
+                <div class="service-content">
+                    <h3>Supplying Hotels & Cafés</h3>
+                    <p>Baked goods, sweets, and snacks — made daily, delivered fresh.</p>
+                    <ul class="service-features">
+                        <li>For cafés, hotel lounges, and concept stores</li>
+                        <li>Beautifully made, ready-to-serve items that customers actually buy</li>
+                        <li>Flexible, dependable restocking based on your business volume</li>
+                    </ul>
+                </div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why PRIME Section -->
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <p>Looking to launch your food line, fuel an event, or stock your café with premium snacks? <strong>We're ready when you are.</strong></p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📩</span>
+                    <span class="contact-text">your@email.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">💬</span>
+                    <span class="contact-text">+966-XXXXXXXXX</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
